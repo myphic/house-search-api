@@ -23,11 +23,10 @@ class HousesController extends BaseController
 
     public function index()
     {
-
         return view('welcome');
     }
 
-    public function store(Request $request, $name = null, $bedrooms = null, $bathrooms = null, $storeys = null, $garages = null, $priceFrom = 0, $priceTo = 0)
+    public function store(Request $request)
     {
         $query = House::where('name', 'LIKE', '%' . $request->query('name') . '%')
                         ->where('price', '>=', $request->query('priceFrom', 0))
